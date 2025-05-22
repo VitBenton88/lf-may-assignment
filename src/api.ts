@@ -1,4 +1,4 @@
-import type { BasicRepository } from './types/repository'
+import type { BasicRepository, Repository } from './types/repository'
 
 export const searchRepositories = async (searchKeyword = '', popularFilter = false): Promise<BasicRepository[]> => {
   let fetchUrl = `https://api.github.com/search/repositories?q=${searchKeyword}`;
@@ -21,4 +21,26 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
   }
 
   return [];
+}
+
+export const getRepository = async (owner = '', name = ''): Promise<Repository | null> => {
+  let fetchUrl = `https://api.github.com/repos/${owner}/${name}`;
+
+  const response = await fetch(fetchUrl);
+
+  if (response.ok) {
+    const { archived, created_at, description, homepage, html_url, id, private: isPrivate, name } = await response.json();
+
+    return {
+      archived,
+      created_at,
+      description,
+      homepage,
+      html_url,
+      id,
+      isPrivate, name
+    }
+  }
+
+  return null;
 }
