@@ -39,6 +39,7 @@ tr:hover {
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
+  margin-top: 1rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
