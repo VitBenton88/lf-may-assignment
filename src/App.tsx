@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 import type { Repository } from './types/repository'
 import { fetchRepos } from './api'
 import Loader from './components/Loader'
-import SearchForm from './components/SearchForm'
+import SearchForm from './components/Search/Form'
 
 function App() {
   const [repositories, setRepositories] = useState<Repository[]>([])

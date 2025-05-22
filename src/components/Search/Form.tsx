@@ -5,7 +5,7 @@ type SearchFormProps = {
   disableForm: boolean
 }
 
-const SearchForm: FC<SearchFormProps> = ({ onSubmit, disableForm }) => {
+const Form: FC<SearchFormProps> = ({ onSubmit, disableForm }) => {
   const [filterPopular, setFilterPopular] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
 
@@ -42,4 +42,4 @@ const SearchForm: FC<SearchFormProps> = ({ onSubmit, disableForm }) => {
   )
 }
 
-export default SearchForm
+export default Form
