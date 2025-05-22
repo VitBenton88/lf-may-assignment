@@ -4,6 +4,7 @@ import type { Repository } from './types/repository'
 import { fetchRepos } from './api'
 import Loader from './components/Loader'
 import SearchForm from './components/Search/Form'
+import SearchResults from './components/Search/Results'
 
 function App() {
   const [repositories, setRepositories] = useState<Repository[]>([])
@@ -29,37 +30,15 @@ function App() {
     <>
       <SearchForm onSubmit={handleFormSubmit} disableForm={isLoading} />
 
-      {!hasSearched ? (
-        <p>Enter a keyword to search GitHub.</p>
-      ) : <>
-        {isLoading ? (
+      {!hasSearched && <p>Enter a keyword to search GitHub.</p>}
+
+      {hasSearched && (
+        isLoading ? (
           <Loader />
-        ) :
-          repositories.length ? (
-            <>
-              <h2>Results:</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Public</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {repositories.map(repo => (
-                    <tr key={repo.id}>
-                      <td>{repo.name}</td>
-                      <td>{repo.isPrivate ? '❌' : '✅'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          ) : (
-            <p>No repositories found.</p>
-          )
-        }
-      </>}
+        ) : (
+          <SearchResults items={repositories} />
+        )
+      )}
     </>
   )
 }
