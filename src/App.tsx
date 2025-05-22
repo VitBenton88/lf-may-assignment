@@ -3,15 +3,14 @@ import { useState, useCallback } from 'react'
 import type { Repository } from './types/repository'
 import { fetchRepos } from './api'
 import Loader from './components/Loader'
+import SearchForm from './components/SearchForm'
 
 function App() {
   const [repositories, setRepositories] = useState<Repository[]>([])
-  const [filterPopular, setFilterPopular] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [searchKeyword, setSearchKeyword] = useState('')
 
-  const searchRepos = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
+  const handleFormSubmit = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
     setHasSearched(true);
     setIsLoading(true);
     setRepositories([]);
@@ -26,34 +25,9 @@ function App() {
     }
   }, [])
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault();
-    searchRepos(searchKeyword, filterPopular);
-  }, [searchKeyword, filterPopular])
-
   return (
     <>
-      <h1>GitHub Search</h1>
-      <form onSubmit={handleSubmit}>
-        <fieldset disabled={isLoading}>
-          <input
-            type='text'
-            placeholder='Enter keyword'
-            value={searchKeyword}
-            onChange={e => setSearchKeyword(e.target.value)}
-          />
-          <label>
-            <input
-              type='checkbox'
-              checked={filterPopular}
-              onChange={e => setFilterPopular(e.target.checked)}
-            />
-            Popular
-          </label>
-
-          <button type='submit' disabled={!searchKeyword}>Search</button>
-        </fieldset>
-      </form>
+      <SearchForm onSubmit={handleFormSubmit} disableForm={isLoading} />
 
       {!hasSearched ? (
         <p>Enter a keyword to search GitHub.</p>

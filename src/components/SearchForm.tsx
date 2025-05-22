@@ -1,0 +1,45 @@
+import { useCallback, useState, type FC } from 'react'
+
+type SearchFormProps = {
+  onSubmit: Function
+  disableForm: boolean
+}
+
+const SearchForm: FC<SearchFormProps> = ({ onSubmit, disableForm }) => {
+  const [filterPopular, setFilterPopular] = useState(false)
+  const [searchKeyword, setSearchKeyword] = useState('')
+
+  const handleFormSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+
+    onSubmit(searchKeyword, filterPopular);
+  }, [searchKeyword, filterPopular])
+
+  return (
+    <>
+      <h1>GitHub Search</h1>
+      <form onSubmit={handleFormSubmit}>
+        <fieldset disabled={disableForm}>
+          <input
+            type='text'
+            placeholder='Enter keyword'
+            value={searchKeyword}
+            onChange={e => setSearchKeyword(e.target.value)}
+          />
+          <label>
+            <input
+              type='checkbox'
+              checked={filterPopular}
+              onChange={e => setFilterPopular(e.target.checked)}
+            />
+            Popular
+          </label>
+
+          <button type='submit' disabled={!searchKeyword}>Search</button>
+        </fieldset>
+      </form>
+    </>
+  )
+}
+
+export default SearchForm
