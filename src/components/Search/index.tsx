@@ -1,6 +1,6 @@
 import { useCallback, useState, type FC } from 'react'
 import type { Repository } from '../../types/repository'
-import { fetchRepos } from '../../api'
+import { searchRepositories } from '../../api'
 import Loader from '../Loader'
 import SearchForm from './Form'
 import SearchResults from './Results'
@@ -16,7 +16,7 @@ const Search: FC = () => {
     setRepositories([]);
 
     try {
-      const reposFetch = await fetchRepos(searchKeyword, filterPopular);
+      const reposFetch = await searchRepositories(searchKeyword, filterPopular);
       setRepositories(reposFetch);
     } catch (error) {
       console.error(error);
