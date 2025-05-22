@@ -47,7 +47,7 @@ function App() {
             value={searchKeyword}
             onChange={e => setSearchKeyword(e.target.value)}
           />
-          <button type='submit'>Search</button>
+          <button type='submit' disabled={!searchKeyword}>Search</button>
         </fieldset>
       </form>
 
