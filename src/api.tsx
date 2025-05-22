@@ -1,7 +1,13 @@
 import type { Repository } from './types/repository'
 
-export const fetchRepos = async (isPopular = false): Promise<Repository[]> => {
-  const response = await fetch(isPopular ? '' : '')
+export const fetchRepos = async (searchKeyword = '', searchPopular = false): Promise<Repository[]> => {
+  let fetchUrl = `https://api.github.com/search/repositories?q=${searchKeyword}`;
+
+  if (searchPopular) {
+    fetchUrl += '+stars:>1000'
+  }
+
+  const response = await fetch(fetchUrl)
   const repos = await response.json()
 
   return repos.map((repo: { id: string; name: string; private: boolean }) => ({
