@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Search />} />
-      <Route path='/repo/:id' element={<Repository />} />
+      <Route path='/repo/:owner/:name' element={<Repository />} />
     </Routes>
   )
 }

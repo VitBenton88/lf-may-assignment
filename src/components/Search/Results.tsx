@@ -9,8 +9,8 @@ type SearchResultsProps = {
 const Results: FC<SearchResultsProps> = ({ items }) => {
   const navigate = useNavigate();
 
-  const handleClick = useCallback(async (id: string) => {
-    navigate(`/repo/${id}`);
+  const handleClick = useCallback(async (owner: string, name: string) => {
+    navigate(`/repo/${owner}/${name}`);
   }, [])
 
   if (!items.length) (<p>No repositories found.</p>);
@@ -26,8 +26,8 @@ const Results: FC<SearchResultsProps> = ({ items }) => {
           </tr>
         </thead>
         <tbody>
-          {items.map(({ id, name, isPrivate }) => (
-            <tr key={id} onClick={() => handleClick(id)}>
+          {items.map(({ id, isPrivate, name, owner }) => (
+            <tr key={id} onClick={() => handleClick(owner, name)}>
               <td>{name}</td>
               <td>{isPrivate ? '❌' : '✅'}</td>
             </tr>
