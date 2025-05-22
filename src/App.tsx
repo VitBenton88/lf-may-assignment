@@ -10,8 +10,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
 
-  const searchRepos = useCallback(async () => {
+  const searchRepos = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
     setIsLoading(true);
+    setRepositories([]);
 
     try {
       const reposFetch = await fetchRepos(searchKeyword, filterPopular);
@@ -21,12 +22,12 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  }, [searchKeyword, filterPopular])
+  }, [])
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    searchRepos();
-  }, [])
+    searchRepos(searchKeyword, filterPopular);
+  }, [searchKeyword, filterPopular])
 
   return (
     <>
