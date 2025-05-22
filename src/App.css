@@ -4,3 +4,12 @@
   padding: 2rem;
   text-align: center;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button[type="submit"] {
+  margin-top: 1em;
+}
