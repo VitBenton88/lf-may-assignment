@@ -1,11 +1,11 @@
 import { useCallback, useState, type FC } from 'react'
 
 type SearchFormProps = {
-  onSubmit: Function
   disableForm: boolean
+  onSubmit: Function
 }
 
-const Form: FC<SearchFormProps> = ({ onSubmit, disableForm }) => {
+const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
   const [filterPopular, setFilterPopular] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
 
