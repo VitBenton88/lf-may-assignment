@@ -7,10 +7,12 @@ import Loader from './components/Loader'
 function App() {
   const [repositories, setRepositories] = useState<Repository[]>([])
   const [filterPopular, setFilterPopular] = useState(false)
+  const [hasSearched, setHasSearched] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
 
   const searchRepos = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
+    setHasSearched(true);
     setIsLoading(true);
     setRepositories([]);
 
@@ -34,6 +36,12 @@ function App() {
       <h1>GitHub Search</h1>
       <form onSubmit={handleSubmit}>
         <fieldset disabled={isLoading}>
+          <input
+            type='text'
+            placeholder='Enter keyword'
+            value={searchKeyword}
+            onChange={e => setSearchKeyword(e.target.value)}
+          />
           <label>
             <input
               type='checkbox'
@@ -42,20 +50,17 @@ function App() {
             />
             Popular
           </label>
-          <input
-            type='text'
-            placeholder='Enter keyword'
-            value={searchKeyword}
-            onChange={e => setSearchKeyword(e.target.value)}
-          />
+
           <button type='submit' disabled={!searchKeyword}>Search</button>
         </fieldset>
       </form>
 
-      {isLoading ? (
-        <Loader />
+      {!hasSearched ? (
+        <p>Enter a keyword to search GitHub.</p>
       ) : <>
-        {
+        {isLoading ? (
+          <Loader />
+        ) :
           repositories.length ? (
             <>
               <h2>Results:</h2>
@@ -77,7 +82,7 @@ function App() {
               </table>
             </>
           ) : (
-            <p>Enter a keyword to search GitHub.</p>
+            <p>No repositories found.</p>
           )
         }
       </>}

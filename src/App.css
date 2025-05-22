@@ -5,13 +5,32 @@
   text-align: center;
 }
 
-form {
+form,
+fieldset {
   display: flex;
   flex-direction: column;
 }
 
+input[type="text"] {
+  padding: .5em;
+}
+
 button[type="submit"] {
   margin-top: 1em;
+}
+
+td,
+th {
+  padding: 0.5rem 1rem;
+}
+
+td {
+  text-align: left;
+}
+
+tr:hover {
+  background-color: slategray;
+  cursor: pointer;
 }
 
 .loader {
