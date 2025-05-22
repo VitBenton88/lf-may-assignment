@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import type { Repository } from './types/repository'
 import { fetchRepos } from './api'
 import Loader from './components/Loader'
@@ -10,7 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
 
-  const searchRepos = async () => {
+  const searchRepos = useCallback(async () => {
     setIsLoading(true);
 
     try {
@@ -21,12 +21,12 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [searchKeyword, filterPopular])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     searchRepos();
-  }
+  }, [])
 
   return (
     <>
