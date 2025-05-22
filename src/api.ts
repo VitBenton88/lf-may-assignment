@@ -1,6 +1,6 @@
-import type { Repository } from './types/repository'
+import type { BasicRepository } from './types/repository'
 
-export const searchRepositories = async (searchKeyword = '', popularFilter = false): Promise<Repository[]> => {
+export const searchRepositories = async (searchKeyword = '', popularFilter = false): Promise<BasicRepository[]> => {
   let fetchUrl = `https://api.github.com/search/repositories?q=${searchKeyword}`;
 
   if (popularFilter) {

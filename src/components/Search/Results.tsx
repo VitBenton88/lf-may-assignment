@@ -1,9 +1,9 @@
 import { useCallback, type FC } from 'react'
-import type { Repository } from '../../types/repository'
+import type { BasicRepository } from '../../types/repository'
 import { useNavigate } from 'react-router-dom'
 
 type SearchResultsProps = {
-  items: Repository[]
+  items: BasicRepository[]
 }
 
 const Results: FC<SearchResultsProps> = ({ items }) => {
