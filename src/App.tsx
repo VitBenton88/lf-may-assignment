@@ -18,6 +18,26 @@ function App() {
 
   return (
     <>
+      {repositories.length ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Private</th>
+            </tr>
+          </thead>
+          <tbody>
+            {repositories.map(repo => (
+              <tr key={repo.id}>
+                <td>{repo.name}</td>
+                <td>{repo.isPrivate ? '✅' : '❌'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>Enter a keyword to search GitHub.</p>
+      )}
     </>
   )
 }
