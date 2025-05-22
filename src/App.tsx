@@ -63,14 +63,14 @@ function App() {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Private</th>
+                    <th>Public</th>
                   </tr>
                 </thead>
                 <tbody>
                   {repositories.map(repo => (
                     <tr key={repo.id}>
                       <td>{repo.name}</td>
-                      <td>{repo.isPrivate ? '✅' : '❌'}</td>
+                      <td>{repo.isPrivate ? '❌' : '✅'}</td>
                     </tr>
                   ))}
                 </tbody>
