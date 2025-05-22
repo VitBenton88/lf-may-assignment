@@ -10,17 +10,22 @@ function App() {
 
   const searchRepos = async () => {
     try {
-      const reposFetch = await fetchRepos(filterPopular);
+      const reposFetch = await fetchRepos(searchKeyword, filterPopular);
       setRepositories(reposFetch);
     } catch (error) {
       console.error(error);
     }
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    searchRepos();
+  }
+
   return (
     <>
       <h1>GitHub Search</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <input
             type='checkbox'
