@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from 'react'
+import { useCallback, useEffect, useState, type FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getRepository } from '../../api'
 import type { Repository } from '../../types/repository'
@@ -14,6 +14,11 @@ const Repository: FC = () => {
   if (!name || !owner) {
     navigate('/')
   }
+
+  const formatDisplayDate = useCallback((isoString: string): string => {
+    const date = new Date(isoString);
+    return date.toLocaleString();
+  }, [])
 
   useEffect(() => {
     const fetchRepository = async () => {
@@ -42,7 +47,7 @@ const Repository: FC = () => {
       {!!repository.description &&
         (<h2>{repository.description}</h2>)
       }
-      <h3>Created: {repository.created_at}</h3>
+      <h3>Created: {formatDisplayDate(repository.created_at)}</h3>
 
       <h4>Details:</h4>
       <ul>

@@ -1,6 +1,6 @@
 export type BasicRepository = {
+  created_at: string
   id: string
-  isPrivate: boolean
   name: string
   owner: string
 }

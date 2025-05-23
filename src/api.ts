@@ -20,9 +20,9 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
   if (response.ok) {
     const { items } = await response.json();
 
-    return items.map((repo: { id: string; name: string; owner: { login: string }; private: boolean }) => ({
+    return items.map((repo: { created_at: string; id: string; name: string; owner: { login: string }; }) => ({
+      created_at: repo.created_at,
       id: repo.id,
-      isPrivate: repo.private,
       name: repo.name,
       owner: repo.owner.login,
     }))
