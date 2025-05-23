@@ -48,11 +48,24 @@ const Repository: FC = () => {
         {!!repository.description &&
           (<h2>{repository.description}</h2>)
         }
-        <h3>Owner: {repository.owner}</h3>
+        <h3>Owner: <ExternalLink href={repository.owner_url}>{repository.owner} &rarr;</ExternalLink></h3>
         <h4>Created: {formatDisplayDate(repository.created_at)}</h4>
+        <h4>Updated: {formatDisplayDate(repository.updated_at)}</h4>
       </header>
 
       <aside>
+        <section>
+          <header>
+            <h4>Details:</h4>
+          </header>
+          <ul>
+            <li>Language: {repository.language}</li>
+            <li>Size: {repository.size} bytes</li>
+            <li>{repository.has_downloads ? 'Has downloads' : 'No downloads'}</li>
+            <li>{repository.allow_forking ? 'Allows forking' : 'Does not allow forking'}</li>
+          </ul>
+        </section>
+
         <section>
           <header>
             <h4>Access:</h4>
