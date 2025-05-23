@@ -11,10 +11,6 @@ const Repository: FC = () => {
   const { name, owner } = useParams<{ owner: string, name: string }>()
   const navigate = useNavigate()
 
-  if (!name || !owner) {
-    navigate('/');
-  }
-
   const formatDisplayDate = useCallback((isoString: string): string => {
     const date = new Date(isoString);
     return date.toLocaleString();
