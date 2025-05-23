@@ -26,6 +26,7 @@ button[type="submit"] {
 
 main#repository {
   display: flex;
+  gap: 1em;
 }
 
 main#repository header,
@@ -112,6 +113,5 @@ tr:hover {
   main#repository aside {
     display: flex;
     justify-content: space-around;
-    margin-top: 1em;
   }
 }
