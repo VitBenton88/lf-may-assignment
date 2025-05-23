@@ -22,6 +22,8 @@ button[type="submit"] {
   margin-top: 1em;
 }
 
+/* Repository page */
+
 main#repository {
   display: flex;
 }
@@ -45,6 +47,8 @@ main#repository aside {
 main#repository h4 {
   margin: 0;
 }
+
+/* Search page */
 
 td,
 th {
@@ -88,6 +92,8 @@ tr:hover {
     border-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15);
   }
 }
+
+/* Mobile styles */
 
 @media (max-width: 768px) {
   main#repository {
