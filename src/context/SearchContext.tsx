@@ -7,6 +7,7 @@ type SearchContextType = {
   handleSearch: Function
   hasSearched: boolean
   isLoading: boolean
+  searchTerm: string
 }
 
 const defaultValue: SearchContextType = {
@@ -14,6 +15,7 @@ const defaultValue: SearchContextType = {
   handleSearch: () => { },
   hasSearched: false,
   isLoading: false,
+  searchTerm: '',
 }
 
 const SearchContext = createContext<SearchContextType>(defaultValue)
@@ -21,12 +23,14 @@ const SearchContext = createContext<SearchContextType>(defaultValue)
 const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [hasSearched, setHasSearched] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
   const [repositories, setRepositories] = useState<BasicRepository[]>([])
 
   const handleSearch = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
     setHasSearched(true);
     setIsLoading(true);
     setRepositories([]);
+    setSearchTerm(searchKeyword);
 
     try {
       const reposFetch = await searchRepositories(searchKeyword, filterPopular);
@@ -48,6 +52,7 @@ const SearchProvider = ({ children }: { children: ReactNode }) => {
         hasSearched,
         isLoading,
         repositories,
+        searchTerm,
       }
     }>
       {children}
