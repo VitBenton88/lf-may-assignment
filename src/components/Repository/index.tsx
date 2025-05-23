@@ -43,7 +43,7 @@ const Repository: FC = () => {
       <main id="repository">
         <header>
           <h1>{repository.name}</h1>
-          <small>⭐ {repository.stargazers_count}</small>
+          <small aria-label={`${repository.stargazers_count} stars`}>⭐ {repository.stargazers_count}</small>
           {!!repository.description &&
             (<h2>{repository.description}</h2>)
           }

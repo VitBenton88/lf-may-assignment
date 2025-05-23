@@ -22,19 +22,29 @@ const Results: FC<SearchResultsProps> = ({ items }) => {
 
   return (
     <>
-      <h2>Results:</h2>
       <table>
+        <caption>Search results</caption>
         <thead>
           <tr>
             <th>Name</th>
             <th>Created</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {items.map(({ created_at, id, name, owner }) => (
-            <tr key={id} onClick={() => handleClick(owner, name)}>
+            <tr key={id}>
               <td>{name}</td>
               <td>{formatDisplayDate(created_at)}</td>
+              <td>
+                <button
+                  type="button"
+                  aria-label={`View details for ${name} repository`}
+                  onClick={() => handleClick(owner, name)}
+                >
+                  View
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -37,14 +37,13 @@ main#search form {
   width: 100%;
 }
 
+table {
+  margin-top: 1em;
+}
+
 td,
 th {
   padding: 0.5rem 1rem;
-}
-
-tr:hover {
-  background-color: slategray;
-  cursor: pointer;
 }
 
 /* Repository page */
