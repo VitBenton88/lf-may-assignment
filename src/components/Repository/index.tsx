@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState, type FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getRepository } from '../../api'
-import type { Repository } from '../../types/repository'
+import type { Repository as RepositoryType } from '../../types/repository'
 import Loader from '../Loader'
 import ExternalLink from '../ExternalLink'
 
 const Repository: FC = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const [repository, setRepository] = useState<Repository | null>(null)
+  const [repository, setRepository] = useState<RepositoryType | null>(null)
   const { name, owner } = useParams<{ owner: string, name: string }>()
   const navigate = useNavigate()
 
