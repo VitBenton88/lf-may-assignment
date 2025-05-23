@@ -2,13 +2,16 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 form,
 fieldset {
   display: flex;
   flex-direction: column;
+}
+
+h1 {
+  margin: 0;
 }
 
 input[type="text"] {
@@ -19,13 +22,33 @@ button[type="submit"] {
   margin-top: 1em;
 }
 
+main#repository {
+  display: flex;
+}
+
+main#repository header,
+main#repository aside {
+  padding: 1em;
+}
+
+main#repository header {
+  padding: 0;
+  width: calc(70% - 2em);
+}
+
+main#repository aside {
+  border: 1px solid white;
+  border-radius: 15px;
+  width: calc(30% - 30px);
+}
+
+main#repository h4 {
+  margin: 0;
+}
+
 td,
 th {
   padding: 0.5rem 1rem;
-}
-
-td {
-  text-align: left;
 }
 
 tr:hover {
@@ -63,5 +86,22 @@ tr:hover {
 
   100% {
     border-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  main#repository {
+    flex-direction: column;
+  }
+
+  main#repository header,
+  main#repository aside {
+    width: auto;
+  }
+
+  main#repository aside {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
   }
 }

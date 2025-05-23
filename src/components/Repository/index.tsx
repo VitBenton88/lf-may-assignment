@@ -42,30 +42,42 @@ const Repository: FC = () => {
   if (!repository?.id) return (<p>Repository not found.</p>)
 
   return (
-    <main>
-      <h1>{repository.name}</h1>
-      {!!repository.description &&
-        (<h2>{repository.description}</h2>)
-      }
-      <h3>Created: {formatDisplayDate(repository.created_at)}</h3>
-
-      <h4>Details:</h4>
-      <ul>
-        <li>{repository.archived ? 'Archived' : 'Not archived'}</li>
-        <li>{repository.isPrivate ? 'Private' : 'Public'}</li>
-      </ul>
-
-      <h4>Links:</h4>
-      <ul>
-        {!!repository.homepage &&
-          (<li>
-            <ExternalLink href={repository.homepage}>Homepage &rarr;</ExternalLink>
-          </li>)
+    <main id="repository">
+      <header>
+        <h1>{repository.name}</h1>
+        {!!repository.description &&
+          (<h2>{repository.description}</h2>)
         }
-        <li>
-          <ExternalLink href={repository.html_url}>GitHub &rarr;</ExternalLink>
-        </li>
-      </ul>
+        <h3>Created: {formatDisplayDate(repository.created_at)}</h3>
+      </header>
+
+      <aside>
+        <section>
+          <header>
+            <h4>Access:</h4>
+          </header>
+          <ul>
+            <li>{repository.archived ? 'Archived' : 'Not archived'}</li>
+            <li>{repository.isPrivate ? 'Private' : 'Public'}</li>
+          </ul>
+        </section>
+
+        <section>
+          <header>
+            <h4>Links:</h4>
+          </header>
+          <ul>
+            {!!repository.homepage &&
+              (<li>
+                <ExternalLink href={repository.homepage}>Homepage &rarr;</ExternalLink>
+              </li>)
+            }
+            <li>
+              <ExternalLink href={repository.html_url}>GitHub &rarr;</ExternalLink>
+            </li>
+          </ul>
+        </section>
+      </aside>
     </main>
   )
 }
