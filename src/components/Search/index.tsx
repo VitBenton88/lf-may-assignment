@@ -29,7 +29,7 @@ const Search: FC = () => {
   }, [])
 
   return (
-    <>
+    <main>
       <SearchForm disableForm={isLoading} onSubmit={handleFormSubmit} />
 
       {!hasSearched && <p>Enter a keyword to search GitHub.</p>}
@@ -41,7 +41,7 @@ const Search: FC = () => {
           <SearchResults items={repositories} />
         )
       )}
-    </>
+    </main>
   )
 }
 

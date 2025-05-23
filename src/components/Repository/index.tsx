@@ -42,7 +42,7 @@ const Repository: FC = () => {
   if (!repository?.id) return (<p>Repository not found.</p>)
 
   return (
-    <>
+    <main>
       <h1>{repository.name}</h1>
       {!!repository.description &&
         (<h2>{repository.description}</h2>)
@@ -66,7 +66,7 @@ const Repository: FC = () => {
           <ExternalLink href={repository.html_url}>GitHub &rarr;</ExternalLink>
         </li>
       </ul>
-    </>
+    </main>
   )
 }
 
