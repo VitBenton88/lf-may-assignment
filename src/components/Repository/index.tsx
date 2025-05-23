@@ -11,18 +11,14 @@ const Repository: FC = () => {
   const { name, owner } = useParams<{ owner: string, name: string }>()
   const navigate = useNavigate()
 
+  if (!name || !owner) {
+    navigate('/');
+  }
+
   const formatDisplayDate = useCallback((isoString: string): string => {
     const date = new Date(isoString);
     return date.toLocaleString();
   }, [])
-
-  const handleNavigateHome = useCallback(() => {
-    navigate('/')
-  }, [])
-
-  if (!name || !owner) {
-    handleNavigateHome()
-  }
 
   useEffect(() => {
     const fetchRepository = async () => {
@@ -47,7 +43,7 @@ const Repository: FC = () => {
 
   return (
     <>
-      <nav><button type='button' onClick={handleNavigateHome}>&larr; Back to search</button></nav>
+      <nav><button type='button' onClick={() => navigate('/')}>&larr; Back to search</button></nav>
       <main id="repository">
         <header>
           <h1>{repository.name}</h1>
