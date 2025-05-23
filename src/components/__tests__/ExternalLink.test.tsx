@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, beforeEach, expect } from 'vitest'
-import ExternalLink from '../ExternalLink'
+import { describe, it, beforeEach, expect, vi } from 'vitest'
+import ExternalLink, { type ExternalLinkProps } from '../ExternalLink'
+
+const mockHref = 'https://test.com';
+const mockTarget = '_self';
+const mockDefaultProps: ExternalLinkProps = { href: mockHref, children: null };
 
 describe('ExternalLink', () => {
-  const mockHref = 'https://test.com';
-  const mockTarget = '_self';
+  const renderComponent = (propData = mockDefaultProps) =>
+    render(<ExternalLink {...propData} />);
 
   const elements = {
     get link() { return screen.getByTestId('link'); },
@@ -13,7 +17,7 @@ describe('ExternalLink', () => {
   describe('render', () => {
     describe('with href prop', () => {
       beforeEach(() => {
-        render(<ExternalLink href={mockHref}><span>Click me</span></ExternalLink>)
+        renderComponent();
       })
 
       it('renders an anchor element with the correct href value', () => {
@@ -25,7 +29,7 @@ describe('ExternalLink', () => {
 
     describe('with target prop', () => {
       beforeEach(() => {
-        render(<ExternalLink href={mockHref} target={mockTarget}><span>Click me</span></ExternalLink>)
+        renderComponent({ ...mockDefaultProps, target: mockTarget })
       })
 
       it('renders an anchor element with the correct target value', () => {
