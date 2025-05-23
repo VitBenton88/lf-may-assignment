@@ -28,22 +28,22 @@ const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
       <form onSubmit={handleFormSubmit}>
         <fieldset disabled={disableForm}>
           <input
-            type='text'
-            placeholder='Enter keyword'
+            type="text"
+            placeholder="Enter keyword"
             value={searchKeyword}
             onChange={e => setSearchKeyword(e.target.value)}
             required
           />
           <label>
             <input
-              type='checkbox'
+              type="checkbox"
               checked={filterPopular}
               onChange={e => setFilterPopular(e.target.checked)}
             />
             Popular
           </label>
 
-          <button type='submit'>Search</button>
+          <button type="submit">Search</button>
         </fieldset>
       </form>
     </>
