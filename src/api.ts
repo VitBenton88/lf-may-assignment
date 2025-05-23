@@ -1,7 +1,9 @@
 import type { BasicRepository, Repository } from './types/repository'
 
+const BASE_URL = 'https://api.github.com';
+
 export const searchRepositories = async (searchKeyword = '', popularFilter = false): Promise<BasicRepository[]> => {
-  let fetchUrl = `https://api.github.com/search/repositories?q=${searchKeyword}`;
+  let fetchUrl = `${BASE_URL}/search/repositories?q=${searchKeyword}`;
 
   if (popularFilter) {
     fetchUrl += '+stars:>1000'
@@ -24,7 +26,7 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
 }
 
 export const getRepository = async (owner = '', name = ''): Promise<Repository | null> => {
-  let fetchUrl = `https://api.github.com/repos/${owner}/${name}`;
+  let fetchUrl = `${BASE_URL}/repos/${owner}/${name}`;
 
   const response = await fetch(fetchUrl);
 
