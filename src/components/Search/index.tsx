@@ -1,36 +1,15 @@
-import { useCallback, useState, type FC } from 'react'
-import type { BasicRepository } from '../../types/repository'
-import { searchRepositories } from '../../api'
+import { useContext, type FC } from 'react'
 import Loader from '../Loader'
 import SearchForm from './Form'
 import SearchResults from './Results'
+import { SearchContext } from '../../context/SearchContext'
 
 const Search: FC = () => {
-  const [hasSearched, setHasSearched] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [repositories, setRepositories] = useState<BasicRepository[]>([])
-
-  const handleFormSubmit = useCallback(async (searchKeyword: string, filterPopular: boolean) => {
-    setHasSearched(true);
-    setIsLoading(true);
-    setRepositories([]);
-
-    try {
-      const reposFetch = await searchRepositories(searchKeyword, filterPopular);
-      setRepositories(reposFetch);
-    } catch (error) {
-      console.error(error);
-      if (error instanceof Error) {
-        alert(error.message);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }, [])
+  const { handleSearch, hasSearched, isLoading, repositories } = useContext(SearchContext);
 
   return (
     <main id="search">
-      <SearchForm disableForm={isLoading} onSubmit={handleFormSubmit} />
+      <SearchForm disableForm={isLoading} onSubmit={handleSearch} />
 
       {!hasSearched && <p>Enter a keyword to search GitHub.</p>}
 
