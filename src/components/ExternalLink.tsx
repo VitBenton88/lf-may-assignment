@@ -12,6 +12,7 @@ const ExternalLink: FC<ExternalLinkProps> = ({ children, href, target = '_blank'
       href={href}
       target={target}
       rel="noopener noreferrer"
+      data-testid="link"
     >
       {children}
     </a>
