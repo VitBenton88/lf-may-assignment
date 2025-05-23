@@ -18,7 +18,7 @@ const Results: FC<SearchResultsProps> = ({ items }) => {
     return date.toLocaleString();
   }, [])
 
-  if (!items.length) (<p>No repositories found.</p>);
+  if (!items.length) return (<p>No repositories found.</p>);
 
   return (
     <>
