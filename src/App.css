@@ -130,7 +130,7 @@ main#repository h4 {
 
   main#repository aside {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
   }
 }
