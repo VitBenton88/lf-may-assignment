@@ -11,10 +11,6 @@ fieldset {
   flex-direction: column;
 }
 
-h1 {
-  margin: 0;
-}
-
 nav {
   margin-bottom: 2em;
 }
@@ -27,6 +23,30 @@ button[type="submit"] {
   margin-top: 1em;
 }
 
+/* Search page */
+
+main#search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+main#search form {
+  max-width: 400px;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 0.5rem 1rem;
+}
+
+tr:hover {
+  background-color: slategray;
+  cursor: pointer;
+}
+
 /* Repository page */
 
 main#repository {
@@ -37,6 +57,11 @@ main#repository {
 main#repository header,
 main#repository aside {
   padding: 1em;
+}
+
+main#repository h1 {
+  margin: 0;
+  word-break: break-word;
 }
 
 main#repository header {
@@ -54,18 +79,6 @@ main#repository h4 {
   margin: 0;
 }
 
-/* Search page */
-
-td,
-th {
-  padding: 0.5rem 1rem;
-}
-
-tr:hover {
-  background-color: slategray;
-  cursor: pointer;
-}
-
 /* Components */
 
 .loader {
@@ -75,6 +88,7 @@ tr:hover {
   display: inline-block;
   box-sizing: border-box;
   margin-top: 1rem;
+  width: 24px;
 }
 
 /* Animations */
@@ -118,5 +132,6 @@ tr:hover {
   main#repository aside {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
