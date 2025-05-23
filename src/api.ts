@@ -58,6 +58,7 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository> 
       name,
       owner,
       size,
+      stargazers_count,
       updated_at
     } = await response.json();
 
@@ -76,6 +77,7 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository> 
       owner: owner.login,
       owner_url: owner.html_url,
       size,
+      stargazers_count,
       updated_at
     }
   } else {

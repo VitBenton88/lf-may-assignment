@@ -20,5 +20,6 @@ export type Repository = {
   owner: string
   owner_url: string
   size: number
+  stargazers_count: number
   updated_at: string
 }
