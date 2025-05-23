@@ -85,9 +85,9 @@ main#repository h4 {
   border: 24px solid;
   border-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
   width: 24px;
 }
 
