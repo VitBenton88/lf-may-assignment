@@ -38,7 +38,8 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository |
       homepage,
       html_url,
       id,
-      isPrivate, name
+      isPrivate,
+      name
     }
   }
 
