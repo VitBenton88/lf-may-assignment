@@ -32,6 +32,7 @@ const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
             placeholder='Enter keyword'
             value={searchKeyword}
             onChange={e => setSearchKeyword(e.target.value)}
+            required
           />
           <label>
             <input
@@ -42,7 +43,7 @@ const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
             Popular
           </label>
 
-          <button type='submit' disabled={!searchKeyword}>Search</button>
+          <button type='submit'>Search</button>
         </fieldset>
       </form>
     </>
