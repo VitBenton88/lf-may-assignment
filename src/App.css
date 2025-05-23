@@ -60,6 +60,8 @@ tr:hover {
   cursor: pointer;
 }
 
+/* Components */
+
 .loader {
   border: 24px solid;
   border-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.5);
@@ -68,6 +70,8 @@ tr:hover {
   box-sizing: border-box;
   margin-top: 1rem;
 }
+
+/* Animations */
 
 @media (prefers-reduced-motion: no-preference) {
   .loader {
