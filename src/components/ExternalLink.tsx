@@ -1,6 +1,6 @@
 import { type FC, type ReactNode } from 'react'
 
-type ExternalLinkProps = {
+export type ExternalLinkProps = {
   children: ReactNode
   href: string
   target?: string
