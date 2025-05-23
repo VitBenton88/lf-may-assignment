@@ -2,6 +2,12 @@ import type { BasicRepository, Repository } from './types/repository'
 
 const BASE_URL = 'https://api.github.com';
 
+/**
+ * Search repositories.
+ * @param {string} searchKeyword - Keyword for search query.
+ * @param {boolean} popularFilter - Filter search query for popular repositories (>1k stars).
+ * @returns {BasicRepository[]}
+ */
 export const searchRepositories = async (searchKeyword = '', popularFilter = false): Promise<BasicRepository[]> => {
   let fetchUrl = `${BASE_URL}/search/repositories?q=${searchKeyword}`;
 
@@ -25,6 +31,12 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
   return [];
 }
 
+/**
+ * Get an individual repository's data.
+ * @param {string} owner - Name of repository's owner.
+ * @param {string} name - Repository's name.
+ * @returns {Repository}
+ */
 export const getRepository = async (owner = '', name = ''): Promise<Repository | null> => {
   let fetchUrl = `${BASE_URL}/repos/${owner}/${name}`;
 
