@@ -36,7 +36,9 @@ const Repository: FC = () => {
   return (
     <>
       <h1>{repository.name}</h1>
-      <h2>{repository.description}</h2>
+      {!!repository.description &&
+        (<h2>{repository.description}</h2>)
+      }
       <h3>Created: {repository.created_at}</h3>
 
       <h4>Details:</h4>
