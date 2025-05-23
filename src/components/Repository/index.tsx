@@ -48,7 +48,8 @@ const Repository: FC = () => {
         {!!repository.description &&
           (<h2>{repository.description}</h2>)
         }
-        <h3>Created: {formatDisplayDate(repository.created_at)}</h3>
+        <h3>Owner: {repository.owner}</h3>
+        <h4>Created: {formatDisplayDate(repository.created_at)}</h4>
       </header>
 
       <aside>

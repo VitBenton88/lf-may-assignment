@@ -43,7 +43,18 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository> 
   const response = await fetch(fetchUrl);
 
   if (response.ok) {
-    const { archived, created_at, description, homepage, html_url, id, private: isPrivate, name } = await response.json();
+    const {
+      archived,
+      created_at,
+      description,
+      homepage,
+      html_url,
+      id,
+      private:
+      isPrivate,
+      name,
+      owner
+    } = await response.json();
 
     return {
       archived,
@@ -53,7 +64,8 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository> 
       html_url,
       id,
       isPrivate,
-      name
+      name,
+      owner: owner.login
     }
   } else {
     throw new Error(`Failed to fetch repository. ${response.status} ${response.statusText}`);

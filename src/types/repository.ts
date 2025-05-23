@@ -14,4 +14,5 @@ export type Repository = {
   id: string
   isPrivate: boolean
   name: string
+  owner: string
 }
