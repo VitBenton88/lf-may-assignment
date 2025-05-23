@@ -20,6 +20,9 @@ const Search: FC = () => {
       setRepositories(reposFetch);
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        alert(error.message);
+      }
     } finally {
       setIsLoading(false);
     }

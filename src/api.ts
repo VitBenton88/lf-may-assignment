@@ -26,9 +26,9 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
       name: repo.name,
       owner: repo.owner.login,
     }))
+  } else {
+    throw new Error(`Failed to search repositories. ${response.status} ${response.statusText}`);
   }
-
-  return [];
 }
 
 /**
@@ -37,7 +37,7 @@ export const searchRepositories = async (searchKeyword = '', popularFilter = fal
  * @param {string} name - Repository's name.
  * @returns {Repository}
  */
-export const getRepository = async (owner = '', name = ''): Promise<Repository | null> => {
+export const getRepository = async (owner = '', name = ''): Promise<Repository> => {
   let fetchUrl = `${BASE_URL}/repos/${owner}/${name}`;
 
   const response = await fetch(fetchUrl);
@@ -55,7 +55,7 @@ export const getRepository = async (owner = '', name = ''): Promise<Repository |
       isPrivate,
       name
     }
+  } else {
+    throw new Error(`Failed to fetch repository. ${response.status} ${response.statusText}`);
   }
-
-  return null;
 }

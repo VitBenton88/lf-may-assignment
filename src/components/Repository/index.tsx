@@ -22,6 +22,9 @@ const Repository: FC = () => {
         setRepository(fetchedRepository);
       } catch (error) {
         console.error(error);
+        if (error instanceof Error) {
+          alert(error.message);
+        }
       } finally {
         setIsLoading(false);
       }
