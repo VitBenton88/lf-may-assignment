@@ -6,7 +6,7 @@ type SearchResultsProps = {
   items: BasicRepository[]
 }
 
-const Results: FC<SearchResultsProps> = ({ items }) => {
+const Results: FC<SearchResultsProps> = ({ items, ...props }) => {
   const navigate = useNavigate();
 
   const handleClick = useCallback(async (owner: string, name: string) => {
@@ -22,7 +22,7 @@ const Results: FC<SearchResultsProps> = ({ items }) => {
 
   return (
     <>
-      <table>
+      <table {...props}>
         <caption>Search results</caption>
         <thead>
           <tr>

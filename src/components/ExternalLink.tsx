@@ -6,13 +6,14 @@ export type ExternalLinkProps = {
   target?: string
 }
 
-const ExternalLink: FC<ExternalLinkProps> = ({ children, href, target = '_blank' }) => {
+const ExternalLink: FC<ExternalLinkProps> = ({ children, href, target = '_blank', ...props }) => {
   return (
     <a
       href={href}
       target={target}
       rel="noopener noreferrer"
       data-testid="link"
+      {...props}
     >
       {children}
     </a>

@@ -6,7 +6,7 @@ type SearchFormProps = {
   onSubmit: Function
 }
 
-const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
+const Form: FC<SearchFormProps> = ({ disableForm, onSubmit, ...props }) => {
   const [filterPopular, setFilterPopular] = useState(false)
   const [searchKeyword, setSearchKeyword] = useState('')
   const { searchTerm: savedSearchTerm } = useContext(SearchContext);
@@ -25,7 +25,7 @@ const Form: FC<SearchFormProps> = ({ disableForm, onSubmit }) => {
   return (
     <>
       <h1>GitHub Search</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} {...props}>
         <fieldset disabled={disableForm}>
           <input
             type="text"
