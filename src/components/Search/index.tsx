@@ -9,15 +9,15 @@ const Search: FC = () => {
 
   return (
     <main id="search">
-      <SearchForm disableForm={isLoading} onSubmit={handleSearch} />
+      <SearchForm disableForm={isLoading} onSubmit={handleSearch} data-testid="searchForm" />
 
-      {!hasSearched && <p>Enter a keyword to search GitHub.</p>}
+      {!hasSearched && <p data-testid="noSearch">Enter a keyword to search GitHub.</p>}
 
       {hasSearched && (
         isLoading ? (
-          <Loader />
+          <Loader data-testid="loader" />
         ) : (
-          <SearchResults items={repositories} />
+          <SearchResults data-testid="searchResults" items={repositories} />
         )
       )}
     </main>
