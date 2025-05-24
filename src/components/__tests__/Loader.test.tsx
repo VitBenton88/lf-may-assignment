@@ -12,7 +12,7 @@ describe('Loader', () => {
       render(<Loader />)
     })
 
-    it('renders a loader element', () => {
+    it('should render a loader element', () => {
       expect(elements.loader).toBeInTheDocument()
     })
   })

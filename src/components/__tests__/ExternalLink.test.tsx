@@ -20,7 +20,7 @@ describe('ExternalLink', () => {
         renderComponent();
       })
 
-      it('renders an anchor element with the correct href value', () => {
+      it('should render an anchor element with the correct href value', () => {
         const { link } = elements;
         expect(link).toBeInTheDocument()
         expect(link).toHaveAttribute('href', mockHref)
@@ -32,7 +32,7 @@ describe('ExternalLink', () => {
         renderComponent({ ...mockDefaultProps, target: mockTarget })
       })
 
-      it('renders an anchor element with the correct target value', () => {
+      it('should render an anchor element with the correct target value', () => {
         const { link } = elements;
         expect(link).toBeInTheDocument()
         expect(link).toHaveAttribute('target', mockTarget)
