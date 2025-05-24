@@ -35,17 +35,21 @@ const Repository: FC = () => {
   }, [owner, name])
 
   if (isLoading) return (<Loader />)
-  if (!repository?.id) return (<p>Repository not found.</p>)
+  if (!repository?.id) return (<p data-testid="not-found">Repository not found.</p>)
 
   return (
     <>
-      <nav><button type='button' onClick={() => navigate('/')}>&larr; Back to search</button></nav>
+      <nav data-testid="nav">
+        <button data-testid="back-btn" type="button" onClick={() => navigate('/')}>
+          &larr; Back to search
+        </button>
+      </nav>
       <main id="repository">
         <header>
-          <h1>{repository.name}</h1>
+          <h1 data-testid="title">{repository.name}</h1>
           <small aria-label={`${repository.stargazers_count} stars`}>⭐ {repository.stargazers_count}</small>
           {!!repository.description &&
-            (<h2>{repository.description}</h2>)
+            (<h2 data-testid="description">{repository.description}</h2>)
           }
           <h3>Owner: <ExternalLink href={repository.owner_url}>{repository.owner} &rarr;</ExternalLink></h3>
           <h4>Created: {formatDisplayDate(repository.created_at)}</h4>
@@ -60,7 +64,7 @@ const Repository: FC = () => {
             <ul>
               <li>Language: {repository.language}</li>
               <li>Size: {repository.size} bytes</li>
-              <li>{repository.has_downloads ? 'Has downloads' : 'No downloads'}</li>
+              <li data-testid="downloads">{repository.has_downloads ? 'Has downloads' : 'No downloads'}</li>
               <li>{repository.allow_forking ? 'Allows forking' : 'Does not allow forking'}</li>
             </ul>
           </section>
