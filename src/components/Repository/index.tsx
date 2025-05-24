@@ -51,7 +51,7 @@ const Repository: FC = () => {
           {!!repository.description &&
             (<h2 data-testid="description">{repository.description}</h2>)
           }
-          <h3>Owner: <ExternalLink href={repository.owner_url}>{repository.owner} &rarr;</ExternalLink></h3>
+          <h3>Owner: <ExternalLink data-testid="owner-link" href={repository.owner_url}>{repository.owner} &rarr;</ExternalLink></h3>
           <h4>Created: {formatDisplayDate(repository.created_at)}</h4>
           <h4>Updated: {formatDisplayDate(repository.updated_at)}</h4>
         </header>

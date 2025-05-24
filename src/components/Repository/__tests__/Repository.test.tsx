@@ -60,6 +60,7 @@ describe('Repository', () => {
     get downloads() { return screen.queryByTestId('downloads'); },
     get nav() { return screen.queryByTestId('nav'); },
     get notFoundWarning() { return screen.queryByTestId('not-found'); },
+    get ownerLink() { return screen.queryByTestId('owner-link'); },
     get title() { return screen.queryByTestId('title'); },
   };
 
@@ -78,12 +79,13 @@ describe('Repository', () => {
 
       it('should render correct repository data', async () => {
         await waitFor(() => {
-          const { description, downloads, notFoundWarning, title } = elements;
+          const { description, downloads, notFoundWarning, ownerLink, title } = elements;
 
           expect(notFoundWarning).not.toBeInTheDocument()
           expect(description).toBeInTheDocument()
           expect(description).toHaveTextContent(mockRepo.description)
           expect(downloads).toHaveTextContent('Has downloads')
+          expect(ownerLink).toHaveAttribute('href', mockRepo.owner_url)
           expect(title).toHaveTextContent(mockRepo.name)
         })
       })
